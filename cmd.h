@@ -70,8 +70,8 @@ namespace cc0
 		class Params
 		{
 		private:
-			char **m_params;
-			uint32_t     m_param_count;
+			char     **m_params;
+			uint32_t   m_param_count;
 		
 		public:
 			/// @brief Wraps a number of parameters in a wrapper class.

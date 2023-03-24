@@ -119,22 +119,29 @@ int cc0::cmd::Process(int argc, char **argv, bool halt_on_unrecognized)
 			if (halt_on_unrecognized) {
 				return 1;
 			}
-		} else if (i + 1 >= argc) {
-			std::cout << "too few parameters: " << argv[i] << std::endl;
-		} else if (!a->fn(Params(argv + i + 1, a->param_count))) {
-			success = false;
-			if (a->halt_on_fail) { return 1; }
-			i += a->param_count;
 		} else {
+				if (i + a->param_count >= argc) {
+				std::cout << "too few parameters: " << argv[i] << std::endl;
+			} else if (!a->fn(Params(a->param_count > 0 ? argv + i + 1 : nullptr, a->param_count))) {
+				success = false;
+				if (a->halt_on_fail) { return 1; }
+			}
 			i += a->param_count;
 		}
 	}
 	return success ? 0 : 1;
 }
 
-CC0_CMD_BEGIN(help)
+CC0_CMD_BEGIN(version)
 {
 	std::cout << Information().app_name << " " << Information().version << std::endl;
+	return true;
+}
+CC0_CMD_END(version, 0, "Print version.", false)
+
+CC0_CMD_BEGIN(help)
+{
+	version().Run(cc0::cmd::Params(nullptr, 0));
 	for (auto i = Cmds().begin(); i != Cmds().end(); ++i) {
 		std::cout << i->first;
 		for (uint64_t j = 0; j < Information().longest_cmd - i->first.size(); ++j) {
@@ -145,10 +152,3 @@ CC0_CMD_BEGIN(help)
 	return true;
 }
 CC0_CMD_END(help, 0, "Print help.", false)
-
-CC0_CMD_BEGIN(version)
-{
-	std::cout << Information().app_name << " " << Information().version << std::endl;
-	return true;
-}
-CC0_CMD_END(version, 0, "Print version.", false)
