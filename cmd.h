@@ -1,3 +1,9 @@
+/// @file
+/// @author github.com/SirJonthe
+/// @date 2023
+/// @copyright Public domain.
+/// @license CC0
+
 #ifndef CC0_CMD_H_INCLUDED__
 #define CC0_CMD_H_INCLUDED__
 
