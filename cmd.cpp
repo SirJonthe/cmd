@@ -2,7 +2,7 @@
 /// @author github.com/SirJonthe
 /// @date 2023
 /// @copyright Public domain.
-/// @license CC0
+/// @license CC0 1.0
 
 #include <unordered_map>
 #include <iostream>
