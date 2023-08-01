@@ -5,7 +5,7 @@ Public domain, 2023
 github.com/SirJonthe
 
 ## About
-`cmd` is a minimalist framework for C++ that processes incoming commands from the CLI.
+`cmd` is a minimalist framework for C++11 that processes incoming commands from the CLI.
 
 ## Design
 `cmd` is designed to be as minimalist as possible while still achieving the goal of being a handy tool. 
@@ -208,3 +208,5 @@ What string gets exposed to the command line to trigger a command could use fine
 There should also be some way for short names for the commands to be generated, either manually or automatically based on the long name.
 
 Type-checking could be implemented in the internals of `cmd` where the user can specify what types arguments to commands are expected to have and throws an error if the type is not what is expected. This could be done by replacing the `param_count` variable in `CC0_CMD_END` with a string where each character represents the expected type (`i` for integer, `r` for real, `b` for boolean, and `s` for string) and the length of the string defines the number of expected parameters.
+
+The implementation file is currently using STL. It is desirable to remove this dependency.
