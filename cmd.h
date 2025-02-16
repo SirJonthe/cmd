@@ -1,4 +1,5 @@
-/// @file
+/// @file cmd.h
+/// @brief Contains a minimalist framework for C++11 that processes incoming commands from the CLI.
 /// @author github.com/SirJonthe
 /// @date 2023
 /// @copyright Public domain.
